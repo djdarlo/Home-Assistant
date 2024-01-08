@@ -1,0 +1,288 @@
+type: vertical-stack
+cards:
+  - type: custom:mushroom-title-card
+    title: Now
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_grid_consumption'') | round(2) }}'
+        secondary: Grid
+        icon: mdi:transmission-tower-import
+        icon_color: blue
+        entity: sensor.h6_grid_consumption
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.pv_power_h6'') | round(2) }}'
+        secondary: Solar
+        icon: mdi:solar-power-variant
+        icon_color: accent
+        entity: sensor.pv_power_h6
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_battery_discharge'') | round(2) }}'
+        secondary: Discharge
+        icon: mdi:battery-arrow-down
+        icon_color: teal
+        entity: sensor.h6_battery_discharge
+        tap_action:
+          action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_load_power'') | round(2) }}'
+        secondary: Load
+        icon: mdi:home-lightning-bolt
+        icon_color: cyan
+        entity: sensor.h6_load_power
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_feed_in'') | round(2) }}'
+        secondary: Export
+        icon: mdi:transmission-tower-export
+        icon_color: purple
+        entity: sensor.h6_feed_in
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_battery_charge'') | round(2) }}'
+        secondary: Charge
+        icon: mdi:battery-arrow-up
+        icon_color: pink
+        entity: sensor.h6_battery_charge
+        tap_action:
+          action: more-info
+  - type: custom:mushroom-title-card
+    title: Totals
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_grid_consumption_energy_today'') | round(1) }}'
+        secondary: Grid
+        icon: mdi:transmission-tower-import
+        icon_color: blue
+        entity: sensor.h6_grid_consumption_energy_today
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_solar_energy_today'') | round(1) }}'
+        secondary: Solar
+        icon: mdi:solar-power-variant
+        icon_color: accent
+        entity: sensor.h6_solar_energy_today
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_battery_discharge_today'') | round(1) }}'
+        secondary: Discharge
+        icon: mdi:battery-arrow-down
+        icon_color: teal
+        entity: sensor.h6_battery_discharge_today
+        tap_action:
+          action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_load_energy_today'') | round(1) }}'
+        secondary: Load
+        icon: mdi:home-lightning-bolt
+        icon_color: cyan
+        entity: sensor.h6_load_energy_today
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_feed_in_energy_today'') | round(1) }}'
+        secondary: Export
+        icon: mdi:transmission-tower-export
+        icon_color: purple
+        entity: sensor.h6_feed_in_energy_today
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_battery_charge_today'') | round(1) }}'
+        secondary: Charge
+        icon: mdi:battery-arrow-up
+        icon_color: pink
+        entity: sensor.h6_battery_charge_today
+        tap_action:
+          action: more-info
+  - type: custom:mushroom-title-card
+    title: Battery
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_battery_soc'') | round(0) }} %'
+        secondary: SOC
+        icon: mdi:battery-charging-50
+        icon_color: teal
+        entity: sensor.h6_battery_soc
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.h6_bms_kwh_remaining'') | round(1) }}'
+        secondary: Remaining
+        icon: mdi:battery-charging-50
+        icon_color: teal
+        entity: sensor.h6_bms_kwh_remaining
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.battery_capacity'') | round(1) }}'
+        secondary: Capacity
+        icon: mdi:battery-charging-100
+        icon_color: indigo
+        entity: sensor.battery_capacity
+        tap_action:
+          action: more-info
+  - type: custom:mushroom-title-card
+    title: Solar
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: '{{ states(''sensor.solcast_pv_forecast_forecast_today'') | round(1) }}'
+        secondary: Today
+        icon: mdi:solar-power
+        icon_color: accent
+        entity: sensor.solcast_pv_forecast_forecast_today
+        tap_action:
+          action: more-info
+        badge_icon: ''
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{ states('sensor.solcast_pv_forecast_forecast_remaining_today') |
+          round(1) }}
+        secondary: Remaining
+        icon: mdi:solar-power
+        icon_color: accent
+        entity: sensor.solcast_pv_forecast_forecast_remaining_today
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{ states('sensor.solcast_pv_forecast_forecast_tomorrow') | round(1)
+          }}
+        secondary: Tomorrow
+        icon: mdi:solar-power
+        icon_color: accent
+        entity: sensor.solcast_pv_forecast_forecast_tomorrow
+        tap_action:
+          action: more-info
+  - type: custom:mushroom-title-card
+    title: Rates
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{
+          states('sensor.octopus_energy_electricity_XXX_XXX_current_rate')
+          | round(2) }}
+        secondary: Current
+        icon: mdi:currency-gbp
+        icon_color: blue
+        entity: >-
+          sensor.octopus_energy_electricity_XXX_XXX_current_rate
+        tap_action:
+          action: more-info
+        badge_icon: mdi:currency-gbp
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{
+          states('sensor.octopus_energy_electricity_XXX_XXX_current_accumulative_cost')
+          | round(2) }}/{{
+          ((states('sensor.octopus_energy_electricity_XXX_XXX_current_accumulative_cost')|float
+          -
+          states('sensor.octopus_energy_electricity_XXX_XXX_current_standing_charge')|float
+          ) / states('sensor.h6_grid_consumption_energy_today')|float) |
+          round(2) }}
+        secondary: Total/Average
+        icon: mdi:currency-gbp
+        icon_color: blue
+        entity: >-
+          sensor.octopus_energy_electricity_XXX_XXX_current_accumulative_cost
+        tap_action:
+          action: more-info
+        badge_icon: mdi:currency-gbp
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{
+          states('sensor.octopus_energy_electricity_XXX_XXX_next_rate')
+          | round(2) }}
+        secondary: Next
+        icon: mdi:currency-gbp
+        icon_color: blue
+        entity: sensor.octopus_energy_electricity_XXX_XXX_next_rate
+        tap_action:
+          action: more-info
+        badge_icon: mdi:currency-gbp
+  - type: custom:mushroom-title-card
+    title: Auto Charging
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{
+          states('binary_sensor.octopus_energy_target_half_hourly_charge_slots')
+          }}
+        secondary: Morning
+        icon: mdi:battery-charging-50
+        icon_color: teal
+        entity: binary_sensor.octopus_energy_target_half_hourly_charge_slots
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{ states('binary_sensor.octopus_energy_target_cheap_slots_afternoon')
+          }}
+        secondary: Afternoon
+        icon: mdi:battery-charging-50
+        icon_color: teal
+        entity: binary_sensor.octopus_energy_target_cheap_slots_afternoon
+        tap_action:
+          action: more-info
+      - type: custom:mushroom-template-card
+        primary: >-
+          {{
+          states('binary_sensor.octopus_energy_target_cheap_slots_all_day_4pm')
+          }}
+        secondary: Cheap
+        icon: mdi:battery-charging-50
+        icon_color: teal
+        entity: binary_sensor.octopus_energy_target_cheap_slots_all_day_4pm
+        tap_action:
+          action: more-info
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        primary: >-
+          {% set day_of_week = now().weekday() %} 
+
+          {% set day_values =
+          [states('sensor.load_am_1')|float,states('sensor.load_am_2')|float,states('sensor.load_am_3')|float,states('sensor.load_am_4')|float,states('sensor.load_am_5')|float,states('sensor.load_am_6')|float,states('sensor.load_am_0')|float]
+          %} 
+
+          {{ day_values[day_of_week] | round(2) }}
+        secondary: Load AM
+        icon: mdi:home-lightning-bolt
+        icon_color: cyan
+      - type: custom:mushroom-template-card
+        primary: |2
+                  {% set day_of_week = now().weekday() %} {% set day_values =
+                  [states('sensor.load_day_1')|float-states('sensor.load_am_1')|float,states('sensor.load_day_2')|float-states('sensor.load_am_2')|float,states('sensor.load_day_3')|float-states('sensor.load_am_3')|float,states('sensor.load_day_4')|float-states('sensor.load_am_4')|float,states('sensor.load_day_5')|float-states('sensor.load_am_5')|float,states('sensor.load_day_6')|float-states('sensor.load_am_6')|float,states('sensor.load_day_0')|float-states('sensor.load_am_0')|float]
+                  %} {{ day_values[day_of_week] | round(2) }}        
+        secondary: Load PM
+        icon: mdi:home-lightning-bolt
+        icon_color: cyan
+      - type: custom:mushroom-template-card
+        primary: >-
+          {% set day_of_week = now().weekday() %} 
+
+          {% set day_values =
+          [states('sensor.load_day_1')|float,states('sensor.load_day_2')|float,states('sensor.load_day_3')|float,states('sensor.load_day_4')|float,states('sensor.load_day_5')|float,states('sensor.load_day_6')|float,states('sensor.load_day_0')|float]
+          %} 
+
+          {{ day_values[day_of_week] | round(2) }}
+        secondary: Load Day
+        icon: mdi:home-lightning-bolt
+        icon_color: cyan
